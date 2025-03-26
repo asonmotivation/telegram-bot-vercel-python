@@ -2,7 +2,10 @@
   "builds": [
     {
       "src": "vercel_app/wsgi.py",
-      "use": "@vercel/python"
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "15mb"
+      }
     }
   ],
   "routes": [
@@ -10,5 +13,8 @@
       "src": "/(.*)",
       "dest": "vercel_app/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "TOKEN": "7970579536:AAHOWQDir-ule9h5WxP2UagXFAL3AlON9UY"
+  }
 }
