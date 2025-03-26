@@ -1,20 +1,27 @@
 {
+  "version": 2,
   "builds": [
     {
       "src": "vercel_app/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.10"
       }
     }
   ],
   "routes": [
+    {
+      "src": "/webhook",
+      "dest": "vercel_app/wsgi.py"
+    },
     {
       "src": "/(.*)",
       "dest": "vercel_app/wsgi.py"
     }
   ],
   "env": {
-    "TOKEN": "7970579536:AAHOWQDir-ule9h5WxP2UagXFAL3AlON9UY"
+    "TOKEN": "7970579536:AAHOWQDir-ule9h5WxP2UagXFAL3AlON9UY",
+    "PYTHONUNBUFFERED": "1"
   }
 }
